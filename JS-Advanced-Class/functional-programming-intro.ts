@@ -22,6 +22,10 @@ const user = {
   // Track user history.
 
   //SOLUTION//
+  // Issue with my solution, according to functional programming, is due to arrays being passed by reference w/ pointers,
+  // my functions are mutating the original array being passed to it. What I need to be doing is creating local state and
+  // mutating the locally copied state and returning.
+  
   const moveItemToCart = (cart: typeof item[], purchasedItem: typeof item) => {
     
     cart.push(purchasedItem);
