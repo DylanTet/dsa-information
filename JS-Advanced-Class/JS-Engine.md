@@ -6,6 +6,6 @@
     - DEPENDS ON IMPLEMENTATION if JS is compiled or interpreted.
 
 ### JS Runtime ###
-  - Every browser comes with a JS Engine (w/ Callstacka and mem heap), Runtime, Event loop and callback queue.
+  - Every browser comes with a JS Engine (w/ Callstacka and mem heap) / Runtime, Event loop and callback queue.
     - Runtime gives access to web API's which are async and uses C++ to handle calls.
     - Event loop is only run whec the callstack within the Engine is empty -> then starts popping callback queue.
