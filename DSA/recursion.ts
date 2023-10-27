@@ -43,7 +43,6 @@ const fibRecursive = (num: number) : number => {
         return num;
     }
 
-    console.log(fibRecursive(num - 1) + fibRecursive(num - 2));
     return fibRecursive(num - 1) + fibRecursive(num - 2);
 }
 

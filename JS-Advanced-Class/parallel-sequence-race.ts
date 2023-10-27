@@ -17,7 +17,8 @@ async function parallel() {
   return `prallel is done: ${output1} ${output2} ${output3}`
 }
 
-// SO INSTEAD FROM ES2020, WE CAN USE .allSettled
+// SO INSTEAD FROM ES2020, WE CAN USE .allSettled which will return the outputs with either
+// the rejection or the resolve.
 async function parallelWithAllSettled() {
     const promises = [a(), b(), c()];
     const [output1, output2, output3] = await Promise.allSettled(promises);
