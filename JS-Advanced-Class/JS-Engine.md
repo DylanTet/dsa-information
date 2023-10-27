@@ -6,6 +6,6 @@
     - DEPENDS ON IMPLEMENTATION if JS is compiled or interpreted.
 
 ### JS Runtime ###
-  - Every browser comes with a JS Engine (w/ Callstacka and mem heap) / Runtime, Event loop and callback queue.
+  - Every browser comes with a JS Engine (w/ Callstack and mem heap) / Runtime, Event loop, callback queue as well as a Job queue / microtask queue that ECMA actually ended up adding later to the runtime. The microtask queue takes priority over the callback queue so those jobs are popped off first, for example, Promises.
     - Runtime gives access to web API's which are async and uses C++ to handle calls.
-    - Event loop is only run whec the callstack within the Engine is empty -> then starts popping callback queue.
+    - Event loop is constantly checking if the callstack is empty -> then starts popping microtasks then callback queue.
