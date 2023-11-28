@@ -17,7 +17,6 @@ function generateParenthesis(n: number): string[] {
             backtrack(openN + 1, closedN);
             stack.pop();
         }
-        console.log(stack);
 
         if (closedN < openN) {
             stack.push(')');
