@@ -25,4 +25,24 @@ const insertionSort = () => {
     }
 }
 
-insertionSort();
+function insertionSort2(list: number[]) {
+  // This outer loop runs over the numbers that need to be inserted into the "sorted" area of the array
+  for (let i = 1; i < list.length; i++) {
+    let numberToInsert = list[i];
+    let j: number;
+
+    // This inner loop then loops throught the "Sorted" section of the list to find whether or not any of the indexes are smaller than numberToInsert
+    // and will keep bumping the the larger numbers to the right if they're larger than numberToInsert. If it gets to the beginning of the array, it'll
+    // then just insert at the beginning because j = i - 1 will run, thus setting j = -1 and then we insert the num at 0.
+    for (j = i - 1; list[j] > numberToInsert && j >= 0; j--) {
+      list[j + 1] = list[j];
+    }
+
+    // Now we can insert in the position where we left from the loop before this
+    list[j + 1] = numberToInsert;
+  }
+
+  return list;
+}
+
+const sorted = insertionSort2(numbers);
