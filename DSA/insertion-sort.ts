@@ -31,6 +31,12 @@ function insertionSort2(list: number[]) {
     let numberToInsert = list[i];
     let j: number;
 
+    // Slight improvement checking if the numToInsert is less than the 1st element, if so theres no reason
+    // to cycle through the sorted list.
+    if (numberToInsert < list[0]) {
+      j = -1;
+    }
+
     // This inner loop then loops throught the "Sorted" section of the list to find whether or not any of the indexes are smaller than numberToInsert
     // and will keep bumping the the larger numbers to the right if they're larger than numberToInsert. If it gets to the beginning of the array, it'll
     // then just insert at the beginning because j = i - 1 will run, thus setting j = -1 and then we insert the num at 0.
@@ -38,10 +44,11 @@ function insertionSort2(list: number[]) {
       list[j + 1] = list[j];
     }
 
-    // Now we can insert in the position where we left from the loop before this
+    // Now we can insert in the position where we left off from the loop before this
     list[j + 1] = numberToInsert;
   }
 
+  console.log(list);
   return list;
 }
 

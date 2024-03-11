@@ -2,8 +2,6 @@ const findFactorialRecursive = (number: number) : number => {
     if (number == 2) {
         return 2;
     }
-
-    console.log(number);
     return number * findFactorialRecursive(number - 1);
 };
 
@@ -15,8 +13,6 @@ const findFactorialIterative = (number: number) => {
         factorialNumber = factorialNumber * number;
         number--;
     }
-
-    console.log(factorialNumber);
 };
 
 const fibonacciIterative = (num: number) : number => {
@@ -30,10 +26,8 @@ const fibonacciIterative = (num: number) : number => {
 
     while (currentNum <= num) {
         fibSequence.push(fibSequence[currentNum - 1] + fibSequence[currentNum - 2]);
-        console.log(fibSequence);
         currentNum++;
     }
-
     return fibSequence[-1];
 }
 
@@ -54,3 +48,21 @@ const reverseStringRecursive = (passedString: string) : string => {
 }
 
 reverseStringRecursive("hello")
+
+const array = [10, [12, 14, [1], [16, [20]]], 10, 11];
+
+function nestedAdd(nestedArray: any) {
+  let total = 0;
+  
+  for (let i = 0; i < nestedArray.length; i++) {
+    if (Array.isArray(nestedArray[i])) {
+      total += nestedAdd(nestedArray[i]);
+    } else {
+      total += nestedArray[i];
+    }
+  }
+  return total;
+}
+
+console.log(nestedAdd(array));
+
