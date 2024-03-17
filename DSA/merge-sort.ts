@@ -1,5 +1,3 @@
-
-
 const numberList = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
 const mergeSort = (list: number[]) : number[] => {
@@ -40,3 +38,39 @@ const merge = (leftList: number[], rightList: number[]) => {
 
 const answer = mergeSort(numberList);
 // console.log(answer);
+
+// Frontend Masters Merge Sort Solution
+function frontendMastersMergeSort(list: number[]) {
+  
+  // BASE CASE, return if your length is 1 (or 0)
+  if (list.length < 2) {
+    return list;
+  }
+
+  //Break down into two smaller arrays.
+  const length = list.length;
+  const middle = Math.floor(length / 2);
+  const left = list.slice(0, middle);
+  const right = list.slice(middle);
+  
+  // Call mergeSort on both the left and right list that was sliced from the original array
+  const sortedLeft = frontendMastersMergeSort(left);
+  const sortedRight = frontendMastersMergeSort(right);
+  
+  // Return the merge of both the left and right array.
+  return frontendMastersMerge(sortedLeft, sortedRight);
+}
+
+function frontendMastersMerge(leftList: number[], rightList: number[]) {
+  const returnArray = [];
+
+  while (leftList.length && rightList.length) {
+    if (leftList[0] <= rightList[0]) {
+      returnArray.push(leftList.shift());
+    } else {
+      returnArray.push(rightList.shift());
+    }
+  }
+
+  return returnArray.concat(leftList, rightList);
+}
