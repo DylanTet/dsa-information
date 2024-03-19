@@ -22,19 +22,15 @@
 */
 
 /*
-
-  Quick Sort!
-  
-  Name your function quickSort.
-  
   Quick sort should grab a pivot from the end and then separate the list (not including the pivot)
   into two lists, smaller than the pivot and larger than the pivot. Call quickSort on both of those
   lists independently. Once those two lists come back sorted, concatenate the "left" (or smaller numbers)
   list, the pivot, and the "right" (or larger numbers) list and return that. The base case is when quickSort
   is called on a list with length less-than-or-equal-to 1. In the base case, just return the array given.
-
 */
 
+// The average case for this algo is going to be O(nlogn)
+// The worst case is going to be O(n^2) for sorted lists or reverse sorted lists
 const list = [91, 49, 19, 48, 12, 20, 5, 2, 40, 18, 48, 59, 39];
 
 function quickSort(nums: number[]): number[] {
