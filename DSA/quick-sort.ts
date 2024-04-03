@@ -31,6 +31,7 @@
 
 // The average case for this algo is going to be O(nlogn)
 // The worst case is going to be O(n^2) for sorted lists or reverse sorted lists
+// The space complexity because we need to create an array on each recursive call is going to be O(nlogn)
 const list = [91, 49, 19, 48, 12, 20, 5, 2, 40, 18, 48, 59, 39];
 
 function quickSort(nums: number[]): number[] {
@@ -57,3 +58,12 @@ function quickSort(nums: number[]): number[] {
 
 const orderedList = quickSort(list)
 console.log(orderedList);
+
+// This is the algorithm used for the same time complexity but log(n) space because it is sorted in place without any extra arrays.
+
+
+
+
+function quickSort2(arr: number[]) {
+
+}

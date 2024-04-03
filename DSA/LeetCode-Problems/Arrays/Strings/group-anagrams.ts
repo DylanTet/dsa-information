@@ -12,17 +12,18 @@ The solution here is basically highlighting each character within the alphabet a
 that string the key. So when you have words with the same characters, the string would be the same.
 */
 
+// Time complexity O(n * k)
 function groupAnagrams(strs: string[]): string[][] {
     if (strs.length < 2) return [strs];
   
     const existingValues = new Map<string, string[]>();
     const valueArray = [];
   
-    for (let i = 0; i < strs.length; ++i) {
+    for (let i = 0; i < strs.length; ++i) { // Time O(n)
       const currString = strs[i];
-      let keyHash = Array.from({ length: 26 }, () => 0);
+      let keyHash = Array.from({ length: 26 }, () => 0); // Time O(n), creating a new array of size 26 and filling it with 0.
   
-      for (let j = 0; j < currString.length; ++j) {
+      for (let j = 0; j < currString.length; ++j) { // Time O(k) size of the current string
         keyHash[currString.charCodeAt(j) - 97]++;
       }
   
@@ -35,10 +36,28 @@ function groupAnagrams(strs: string[]): string[][] {
       }
     }
   
-    for (let [key, value] of existingValues) {
+    for (let [key, value] of existingValues) { // Time O(n)
       // console.log(value);
       valueArray.push(value);
     }
   
     return valueArray;
-  };
+};
+
+// Time complexity O(n * k)
+var groupAnagrams1 = function(strs, map = new Map()) {
+    for (let i = 0; i < strs.length; i++) {
+        const hash = strs[i].split('').sort((a, b) => a.localeCompare(b)).join('');
+        if (hash in map) {
+            map[hash].push(strs[i]);
+        } else {
+            map[hash] = [strs[i]];
+        }
+    }
+    const newList = [];
+    for (key in map) {
+        newList.push(map[key]);
+    }
+
+    return newList;
+}
