@@ -37,3 +37,32 @@ function topKFrequent(nums: number[], k: number): number[] {
 
     return returnArray;
 };
+
+var topKFrequentLinear = function(nums, k) {
+    const ans = [];
+    const map = new Map();
+    const arr = Array(nums.length - 1).fill(0);
+
+    nums.forEach(el => { // O(n) filling the map with the numbers and how many times they are found.
+        const val = map.get(el) || 0;
+        map.set(el, val + 1);
+    });
+
+    for (let [key, val] of map) { // O(n) Iterate throught the pairs in the map and push the key at the element in the array at the value number.
+        const prev = arr[val] || [];
+        prev.push(key);
+        arr[val] = prev;
+    }
+
+    arr.reverse();
+    for (let el of arr) { // O(n) starting from the back of the array or the items that were found the most, iterate throught he array and add the keys until the amount of elements to add is zero
+        if (k < 1) break;
+        if (el) {
+            for (let el2 of el) {
+                ans.push(el2);
+                k--;
+            }
+        }
+    }
+    return ans;
+};
